@@ -23,14 +23,19 @@ from students.views import StudentViewSet
 from teachers.views import TeacherViewSet
 from courses.views import CourseViewSet
 from enrollments.views import EnrollmentViewSet
+from employees.views import EmployeeViewSet
+from employees.views import EmployeeLoginView
 
 router = DefaultRouter()
 router.register(r'students', StudentViewSet)
 router.register(r'teachers', TeacherViewSet)
 router.register(r'courses', CourseViewSet)
 router.register(r'enrollments', EnrollmentViewSet)
+router.register(r'employees', EmployeeViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/token/', EmployeeLoginView.as_view(), name='employee_login'),
 ]
+
